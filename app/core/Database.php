@@ -11,7 +11,7 @@ $capsule->addConnection([
     'password'=>'',
     'database'=>'scinfuse',
     'charset'=>'utf8',
-    'collition'=>'utf8_unicode_ci',
+    'collation'=>'utf8_unicode_ci',
     'prefix'=>'',
 
 ]);
