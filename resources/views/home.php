@@ -8,11 +8,7 @@
 </head>
 <body>
     <h1>
-        <?php 
-            foreach($data as $user){
-                echo $user['fname'].'<br>';
-            }
-        ?>
+        Welcome this is a Simple PHP MVC Framework
     </h1>
 </body>
 </html>

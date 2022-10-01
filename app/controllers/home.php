@@ -2,11 +2,9 @@
 
 class Home extends Controller{
 
-    public function index($name = ''){
-
-        $user = User::Select('fname')->get();
+    public function index(){
         
-        $this->view('home',$user);
+        $this->view('home');
 
     }
 }
