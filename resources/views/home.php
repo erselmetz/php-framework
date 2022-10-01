@@ -7,6 +7,12 @@
     <title>Home</title>
 </head>
 <body>
-    <h1><?=$data['name']?></h1>
+    <h1>
+        <?php 
+            foreach($data as $user){
+                echo $user['fname'].'<br>';
+            }
+        ?>
+    </h1>
 </body>
 </html>

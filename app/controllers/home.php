@@ -3,8 +3,10 @@
 class Home extends Controller{
 
     public function index($name = ''){
-        $user = User::Select();
-        $this->view('home',['name'=>$user]);
+
+        $user = User::Select('fname')->get();
+        
+        $this->view('home',$user);
 
     }
 }
