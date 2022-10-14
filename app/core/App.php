@@ -29,7 +29,9 @@ class App{
             }else{
                 $this->method = 'error_404';
             }
-        }else if(isset($url[0])){
+        }
+
+        if(isset($url[0])){
             if(method_exists($this->controller, $url[0])){
                 $this->method = $url[0];
                 unset($url[0]);
