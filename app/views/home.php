@@ -10,5 +10,23 @@
     <h1>
         Welcome this is a Simple PHP MVC Framework
     </h1>
+
+    <button id="btn_submit">submit</button>
+
+    <script src="<?php assets('js/jquery.js') ?>"></script>
+    <script>
+        $('#btn_submit').click(function() {
+            $.ajax({
+            type: "POST",
+            url: "app/post/test.php",
+            data: {
+                test:'test'
+            },
+            success: function (response) {
+                console.log(response)
+            }
+        });
+        });
+    </script>
 </body>
 </html>

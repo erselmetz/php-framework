@@ -51,3 +51,7 @@ class App{
         }
     }
 }
+
+function assets($params){
+    echo 'public/'.$params;
+}
