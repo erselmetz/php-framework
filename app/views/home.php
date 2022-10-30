@@ -17,15 +17,15 @@
     <script>
         $('#btn_submit').click(function() {
             $.ajax({
-            type: "POST",
-            url: "app/post/test.php",
-            data: {
-                test:'test'
-            },
-            success: function (response) {
-                console.log(response)
-            }
-        });
+                type: "POST",
+                url: "app/post/test.php",
+                data: {
+                    test:'test'
+                },
+                success: function (response) {
+                    console.log(response)
+                }
+            });
         });
     </script>
 </body>
