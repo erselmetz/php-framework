@@ -18,15 +18,15 @@
         $('#btn_submit').click(function() {
             $.ajax({
                 type: "POST",
-                url: "test",
+                url: "home/test",
                 data: {
                     test: 'this is a string',
                     test1: false,
                     test2: 1234566789
                 },
                 success: function (response) {
-                    var data = JSON.parse(response);
-                    console.log(data);
+
+                    console.log(response);
                 }
             });
         });
