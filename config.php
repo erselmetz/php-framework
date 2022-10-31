@@ -1,0 +1,3 @@
+<?php
+
+$RewriteBase = '/php-frameword/';
