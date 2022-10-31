@@ -2,11 +2,12 @@
 
 class Home extends Controller{
 
-    public function index(){
+    public function index($post, $get){
         $this->view('home');
     }
 
-    public function test($post,$er,){
+    // POST METHOD
+    public function test($post, $get){
         header('Content-Type: application/json');
         $array = [
             'test' => $post->require('test'),
@@ -15,5 +16,12 @@ class Home extends Controller{
         ];
         
         echo json_encode($array);
+    }
+
+    // GET METHOD
+    public function test1($post, $get){
+        echo $get[0];
+        echo $get[1];
+        echo $get[2];
     }
 }
