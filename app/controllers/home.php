@@ -6,11 +6,14 @@ class Home extends Controller{
         $this->view('home');
     }
 
-    public function test($post){
-        $test = $post->require('test');
-        $test1 = $post->require('test1');
-        $test2 = $post->require('test2');
-
-        printf(json_encode(["test"=>$test, "test1"=>$test1, "test2"=>$test2]));
+    public function test($post,$er,){
+        header('Content-Type: application/json');
+        $array = [
+            'test' => $post->require('test'),
+            'test1' => $post->require('test1'),
+            'test2' => $post->require('test2')
+        ];
+        
+        echo json_encode($array);
     }
 }
