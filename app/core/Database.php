@@ -5,15 +5,14 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 $capsule = new Capsule();
 
 $capsule->addConnection([
-    'driver'=>'mysql',
-    'host'=>'localhost',
-    'username'=>'root',
-    'password'=>'',
-    'database'=>'db_name',
-    'charset'=>'utf8',
-    'collation'=>'utf8_unicode_ci',
-    'prefix'=>'',
-
+    'driver'=> $database['driver'],
+    'host'=> $database['host'],
+    'username'=> $database['username'],
+    'password'=> $database['password'],
+    'database'=> $database['databsae'],
+    'charset'=> $database['charset'],
+    'collation'=> $database['collation'],
+    'prefix'=> $database['prefix'],
 ]);
 
 $capsule->bootEloquent();
