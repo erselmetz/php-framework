@@ -1,5 +1,26 @@
 <?php
 
+function assets($params){
+    global $RewriteBase;
+    return $RewriteBase.'public/'.$params;
+}
+
+class Post{
+
+    public function require($params){
+
+        if(!isset($_POST[$params])){
+            return null;
+        }else{
+            if($_POST[$params] != null || $_POST[$params] != ''){
+                return $_POST[$params];
+            }
+        }
+    }
+}
+
+$post = new Post;
+
 class App{
 
     protected $controller = 'home';
@@ -7,6 +28,9 @@ class App{
     protected $params = [];
 
     public function __construct(){
+
+        global $post;
+
         $url = $this->parseUrl();
 
         ($url == null)?$url[0] = $this->controller:'';
@@ -42,7 +66,7 @@ class App{
 
         $this->params = $url ? array_values($url) : [];
 
-        call_user_func_array([$this->controller, $this->method], $this->params);
+        call_user_func_array([$this->controller, $this->method], [$post,$this->params]);
     }
 
     public function parseUrl(){
@@ -50,8 +74,4 @@ class App{
             return $url = explode('/', filter_var(rtrim($_GET['url'],'/'), FILTER_SANITIZE_URL));
         }
     }
-}
-
-function assets($params){
-    echo 'public/'.$params;
 }

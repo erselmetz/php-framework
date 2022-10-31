@@ -8,22 +8,25 @@
 </head>
 <body>
     <h1>
-        Welcome this is a Simple PHP MVC Framework
+        Welcome this is a Simple PHP Framework
     </h1>
 
     <button id="btn_submit">submit</button>
 
-    <script src="<?php assets('js/jquery.js') ?>"></script>
+    <script src="<?= assets('js/jquery.js') ?>"></script>
     <script>
         $('#btn_submit').click(function() {
             $.ajax({
                 type: "POST",
-                url: "app/post/test.php",
+                url: "test",
                 data: {
-                    test:'test'
+                    test: 'this is a string',
+                    test1: false,
+                    test2: 1234566789
                 },
                 success: function (response) {
-                    console.log(response)
+                    var data = JSON.parse(response);
+                    console.log(data);
                 }
             });
         });
