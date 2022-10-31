@@ -2,7 +2,7 @@
 
 function assets($params){
     global $RewriteBase;
-    return $RewriteBase.'public/'.$params;
+    return $RewriteBase.'Public/'.$params;
 }
 
 class Post{
