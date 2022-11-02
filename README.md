@@ -14,7 +14,6 @@ This is a small PHP mvc framework and it works very simple
 
 4. The name of the url should be the same to the file and the class name as well.
 
-    ![](./Public/img/pic1.png)
 
 5. If the first parameter did not exists on the controllers or class then it will automatically open the home as the default class and the first parameter will be set as a method.
 
@@ -28,10 +27,6 @@ This is a small PHP mvc framework and it works very simple
 ### Example
 
         https://example.com/home/params1/params2/params3
-
-## This is the example to get the value of POST and GET method
-
-<img src="./Public/img/controller.png" width='650'>
 
 ## Example #1
 
