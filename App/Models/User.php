@@ -2,19 +2,12 @@
 
 use Connection\Database as DB;
 
-class User extends DB{
+class User{
 
-    public static function get_info(){
+    public static function post_content(){
 
-        $result = DB::query("SELECT * FROM wp_posts");
+        $results = DB::query("SELECT * FROM wp_posts")->get();
 
-        $array = [];
-
-        while($row = $result->fetch_assoc()){
-            array_push($array,$row);
-
-        }
-
-        return $array;
+        return $results;
     }
 }

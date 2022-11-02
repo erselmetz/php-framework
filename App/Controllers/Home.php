@@ -1,5 +1,7 @@
 <?php
 
+use Connection\Database as DB;
+
 class Home extends Controller{
 
     public function index($post, $get){
@@ -28,8 +30,8 @@ class Home extends Controller{
     // DB test
     public function dbtest($post, $get){
 
-        $user = User::get_info();
+        $post_content = User::post_content();
 
-        $this->view('home',$user);
+        $this->view('home',$post_content);
     }
 }
