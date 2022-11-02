@@ -24,4 +24,12 @@ class Home extends Controller{
         echo $get[1];
         echo $get[2];
     }
+
+    // DB test
+    public function dbtest($post, $get){
+
+        $user = User::get_info();
+
+        $this->view('home',$user);
+    }
 }

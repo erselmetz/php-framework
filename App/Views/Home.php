@@ -11,6 +11,13 @@
         Welcome this is a Simple PHP Framework
     </h1>
 
+    
+        <?php
+            foreach($data as $user){
+                echo $user['post_content'];
+            }
+        ?>
+
     <button id="btn_submit">submit</button>
 
     <script src="<?= assets('js/jquery.js') ?>"></script>
