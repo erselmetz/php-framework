@@ -7,7 +7,7 @@ function assets($params){
 
 class Post{
 
-    public function require($params){
+    public static function require($params){
 
         if(!isset($_POST[$params])){
             return null;
