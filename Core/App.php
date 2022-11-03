@@ -19,8 +19,6 @@ class Post{
     }
 }
 
-$post = new Post;
-
 class App{
 
     protected $controller = 'home';
@@ -62,7 +60,7 @@ class App{
 
         $this->params = $url ? array_values($url) : [];
 
-        call_user_func_array([$this->controller, $this->method], [$post,$this->params]);
+        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
     public function parseUrl(){
