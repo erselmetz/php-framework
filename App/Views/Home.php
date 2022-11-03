@@ -13,8 +13,8 @@
 
     
         <?php
-            foreach($data as $user){
-                echo $user['post_content'];
+            foreach($data['post'] as $post){
+                echo $post['post_content'].'<br>';
             }
         ?>
 

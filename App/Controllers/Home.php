@@ -30,6 +30,8 @@ class Home extends Controller{
 
         $post_content = User::post_content();
 
-        $this->view('home',$post_content);
+        $this->view('home',[
+            'post'=>$post_content
+        ]);
     }
 }
