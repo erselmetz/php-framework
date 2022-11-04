@@ -34,4 +34,10 @@ class Home extends Controller{
             'post'=>$post_content
         ]);
     }
+
+    public function sqlitetest(){
+        foreach(User::sqlite_test() as $data){
+            echo $data['post_content'];
+        }
+    }
 }

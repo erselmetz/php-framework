@@ -13,8 +13,10 @@
 
     
         <?php
-            foreach($data['post'] as $post){
-                echo $post['post_content'].'<br>';
+            if($data != null){
+                foreach($data['post'] as $post){
+                    echo $post['post_content'].'<br>';
+                }
             }
         ?>
 

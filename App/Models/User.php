@@ -1,6 +1,7 @@
 <?php
 
 use Connection\Database as DB;
+use Connection\SQLite as SQLite;
 
 class User extends DB{
 
@@ -16,5 +17,13 @@ class User extends DB{
             ->get();
 
         return $results;
+    }
+
+    public static function sqlite_test(){
+        return SQLite::table("wp_posts")
+            ->select("*")
+            ->where("post_author = 1")
+            ->orderBy('ID desc')
+            ->get();
     }
 }
