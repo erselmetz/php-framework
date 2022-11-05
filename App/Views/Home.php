@@ -11,34 +11,6 @@
         Welcome this is a Simple PHP Framework
     </h1>
 
-    
-        <?php
-            if($data != null){
-                foreach($data['post'] as $post){
-                    echo $post['post_content'].'<br>';
-                }
-            }
-        ?>
-
-    <button id="btn_submit">submit</button>
-
     <script src="<?= assets('js/jquery.js') ?>"></script>
-    <script>
-        $('#btn_submit').click(function() {
-            $.ajax({
-                type: "POST",
-                url: "home/test",
-                data: {
-                    test: 'this is a string',
-                    test1: false,
-                    test2: 1234566789
-                },
-                success: function (response) {
-
-                    console.log(response);
-                }
-            });
-        });
-    </script>
 </body>
 </html>
