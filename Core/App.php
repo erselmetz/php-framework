@@ -2,7 +2,7 @@
 
 function assets($params){
     global $RewriteBase;
-    return $RewriteBase.'Public/'.$params;
+    return $RewriteBase.'public/'.$params;
 }
 
 class Post{
@@ -34,12 +34,12 @@ class App{
         ($url == null)?$url[0] = $this->controller:'';
 
         // classes
-        if(file_exists('App/Controllers/'.$url[0].'.php')){
+        if(file_exists('app/controllers/'.$url[0].'.php')){
             $this->controller = $url[0];
             unset($url[0]);
         }
 
-        require_once 'App/Controllers/'.$this->controller.'.php';
+        require_once 'app/controllers/'.$this->controller.'.php';
 
         $this->controller = new $this->controller;
 

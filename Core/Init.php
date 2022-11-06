@@ -1,14 +1,14 @@
 <?php
 
-require_once "Core/Config.php";
+require_once "core/config.php";
 
 // database
-require_once 'Core/Database.php';
+require_once 'core/Database.php';
 
 // autoload model
 spl_autoload_register(function($classname){
-    require_once 'App/Models/'.$classname.'.php';
+    require_once 'app/Models/'.$classname.'.php';
 });
 
-require_once 'Core/App.php';
-require_once 'Core/Controller.php';
+require_once 'core/app.php';
+require_once 'core/controller.php';
