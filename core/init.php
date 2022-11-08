@@ -1,7 +1,5 @@
 <?php
 
-require_once "core/config.php";
-
 // database
 require_once 'core/database.php';
 
