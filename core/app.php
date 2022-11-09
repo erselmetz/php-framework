@@ -21,7 +21,7 @@ class Post{
 
 class App{
 
-    protected $controller = 'home';
+    protected $controller = 'html';
     protected $method = 'index';
     protected $params = [];
 
