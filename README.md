@@ -8,7 +8,7 @@ This is a small PHP mvc framework and it works very simple
 
 2. Let's take a look in a simple url.
 
-        https:example.com/home/test1/params1/params2/params3
+        https:example.com/html/test1/params1/params2/params3
     
 3. The first parameter of the url will going to find if it's exist in the controller folder.
 
@@ -26,13 +26,13 @@ This is a small PHP mvc framework and it works very simple
 
 ### Example
 
-        https://example.com/home/params1/params2/params3
+        https://example.com/html/params1/params2/params3
 
 ## Example #1
 
-        https://example.com/home/test1/params1/params2/params3
+        https://example.com/html/test1/params1/params2/params3
 
-        home - name of the class
+        html - name of the class
         test1 - name of the method
         params1, params2, params3 - the parameter
 
@@ -40,7 +40,7 @@ This is a small PHP mvc framework and it works very simple
 
         https://example.com/test1/params1/params2/params3
 
-        home - default class
+        html - default class
         test1 - name of the method
         params1, params2, params3 - the parameter
 
@@ -48,6 +48,6 @@ This is a small PHP mvc framework and it works very simple
 
         https://example.com/params1/params2/params3
 
-        home - default class
+        html - default class
         test1 - default method
         params1, params2, params3 - the parameter
