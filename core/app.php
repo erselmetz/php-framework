@@ -9,20 +9,44 @@ function assets($params){
 
 class Post{
 
+    private static $var;
+    private static $limit;
+
     public static function require($params){
 
-        if(!isset($_POST[$params])){
-
-            return null;
-
-        }else{
+        if(isset($_POST[$params])){
 
             if($_POST[$params] != null || $_POST[$params] != ''){
 
-                return $_POST[$params];
+                $a = htmlspecialchars($_POST[$params]);
+                $b = htmlentities($a);
+                $c = strip_tags($b);
+                Post::$var = $c;
 
             }
         }
+        return new Post;
+
+    }
+
+    public static function limit($params){
+
+        if(is_numeric($params)){
+
+            Post::$limit = $params;
+
+        }
+    }
+
+    public static function get(){
+
+        if(strlen(Post::$var >= Post::$limit)){
+
+            Post::$var = "value is limited only to ".Post::$limit;
+
+        }
+
+        return Post::$var;
     }
 }
 
