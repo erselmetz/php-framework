@@ -1,10 +1,20 @@
 <?php
 
+use Core\View;
+
 class Controller{
 
-    public function view($view, $data = []){
+    protected $layout = null;
+    protected $middleware = [];
 
-        require_once 'app/views/'.$view.'.php';
+    public function view($view, $data = [], $layout = null){
+
+        $selectedLayout = $layout ?? ($data['layout'] ?? $this->layout);
+        if(isset($data['layout'])){
+            unset($data['layout']);
+        }
+
+        View::render($view, $data, $selectedLayout);
 
     }
 
@@ -18,10 +28,24 @@ class Controller{
 
         if(Auth::user() == false){
 
-            echo header("location: login");
+            $loginRoute = route('login.show') ?? 'login';
+            header("location: ".$loginRoute);
+            exit;
             
-        }    
+        }
 
+    }
+
+    public function getMiddleware(): array
+    {
+        if (method_exists($this, 'middleware')) {
+            $result = $this->middleware();
+            if (is_array($result)) {
+                return $result;
+            }
+        }
+
+        return (array) $this->middleware;
     }
     
 }

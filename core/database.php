@@ -12,13 +12,13 @@ class Database{
     private static $password;
     private static $dbname;
 
-    public static $query = false;
-    public static $table = false;
+    public static $query = null;
+    public static $table = null;
     public static $select = "*";
-    public static $where = false;
-    public static $andWhere = false;
-    public static $orderBy = false;
-    public static $limit = false;
+    public static $where = '';
+    public static $andWhere = '';
+    public static $orderBy = '';
+    public static $limit = '';
 
     public function __construct(){
         global $database;
@@ -44,12 +44,13 @@ class Database{
     }
 
     public static function where($params){
-        Database::$where = " WHERE ".$params;
+        Database::$where = $params;
+        Database::$andWhere = '';
         return new Database;
     }
 
     public static function andWhere($params){
-        if(Database::$where != false){
+        if(Database::$where !== ''){
             Database::$andWhere .= " AND ".$params;
         }
         return new Database;
@@ -57,14 +58,14 @@ class Database{
 
     public static function orderBy($params){
         if($params != null){
-            Database::$orderBy = " ORDER BY ".$params;
+            Database::$orderBy = $params;
         }
         return new Database;
     }
 
     public static function limit($params){
         if($params != null){
-            Database::$limit = " LIMIT ".$params;
+            Database::$limit = (int) $params;
         }
         return new Database;
     }
@@ -72,6 +73,7 @@ class Database{
     public static function get(){
         $db = Database::connect();
         $array = [];
+        $result = false;
         
         if ($db -> connect_errno) {
             echo "Failed to connect to MySQL: " . $db -> connect_error;
@@ -79,29 +81,39 @@ class Database{
         }
 
         // if query is in used
-        if(Database::$query != false){
+        if(Database::$query !== null){
             $result = $db->query(Database::$query);
-            Database::$table = false;
         }
 
         // if table is in used
-        if(Database::$table != false){
+        if(Database::$table !== null){
             $sql = "SELECT ";
             $sql .= Database::$select;
             $sql .= ' FROM '.Database::$table;
-            $sql .= Database::$where;
-            $sql .= Database::$andWhere;
-            $sql .= Database::$orderBy;
-            $sql .= Database::$limit;
+            if(Database::$where !== ''){
+                $sql .= ' WHERE '.Database::$where;
+            }
+            if(Database::$andWhere !== ''){
+                $sql .= Database::$andWhere;
+            }
+            if(Database::$orderBy !== ''){
+                $sql .= ' ORDER BY '.Database::$orderBy;
+            }
+            if(Database::$limit !== ''){
+                $sql .= ' LIMIT '.Database::$limit;
+            }
             
             // echo $sql;
             $result = $db->query($sql);
-            Database::$query = false;
         }
 
-        while($row = $result->fetch_assoc()){
-            array_push($array,$row);
+        if($result){
+            while($row = $result->fetch_assoc()){
+                array_push($array,$row);
+            }
         }
+
+        Database::resetBuilder();
         return $array;
     }
 
@@ -109,19 +121,29 @@ class Database{
 
         return new mysqli(Database::$host, Database::$username, Database::$password, Database::$dbname);
     }
+
+    private static function resetBuilder(){
+        Database::$query = null;
+        Database::$table = null;
+        Database::$select = "*";
+        Database::$where = '';
+        Database::$andWhere = '';
+        Database::$orderBy = '';
+        Database::$limit = '';
+    }
 }
 
 class SQLite{
 
     private static $SQLite_file;
 
-    public static $query = false;
-    public static $table = false;
+    public static $query = null;
+    public static $table = null;
     public static $select = "*";
-    public static $where = false;
-    public static $andWhere = false;
-    public static $orderBy = false;
-    public static $limit = false;
+    public static $where = '';
+    public static $andWhere = '';
+    public static $orderBy = '';
+    public static $limit = '';
 
     public function __construct(){
         global $SQLite;
@@ -144,12 +166,13 @@ class SQLite{
     }
 
     public static function where($params){
-        SQLite::$where = " WHERE ".$params;
+        SQLite::$where = $params;
+        SQLite::$andWhere = '';
         return new SQLite;
     }
 
     public static function andWhere($params){
-        if(SQLite::$where != false){
+        if(SQLite::$where !== ''){
             SQLite::$andWhere .= " AND ".$params;
         }
         return new SQLite;
@@ -157,46 +180,66 @@ class SQLite{
 
     public static function orderBy($params){
         if($params != null){
-            SQLite::$orderBy = " ORDER BY ".$params;
+            SQLite::$orderBy = $params;
         }
         return new SQLite;
     }
 
     public static function limit($params){
         if($params != null){
-            SQLite::$limit = " LIMIT ".$params;
+            SQLite::$limit = (int) $params;
         }
         return new SQLite;
     }
 
     public static function get(){
         $db = SQLite::connect();
+        $result = false;
 
         // if query is in used
-        if(SQLite::$query != false){
+        if(SQLite::$query !== null){
             $result = $db->query(SQLite::$query);
-            SQLite::$table = false;
         }
 
         // if table is in used
-        if(SQLite::$table != false){
+        if(SQLite::$table !== null){
             $sql = "SELECT ";
             $sql .= SQLite::$select;
             $sql .= ' FROM '.SQLite::$table;
-            $sql .= SQLite::$where;
-            $sql .= SQLite::$andWhere;
-            $sql .= SQLite::$orderBy;
-            $sql .= SQLite::$limit;
+            if(SQLite::$where !== ''){
+                $sql .= ' WHERE '.SQLite::$where;
+            }
+            if(SQLite::$andWhere !== ''){
+                $sql .= SQLite::$andWhere;
+            }
+            if(SQLite::$orderBy !== ''){
+                $sql .= ' ORDER BY '.SQLite::$orderBy;
+            }
+            if(SQLite::$limit !== ''){
+                $sql .= ' LIMIT '.SQLite::$limit;
+            }
             
             // echo $sql;
             $result = $db->query($sql);
-            SQLite::$query = false;
         }
 
-        return $result->fetchAll(PDO::FETCH_ASSOC);
+        $data = $result ? $result->fetchAll(PDO::FETCH_ASSOC) : [];
+
+        SQLite::resetBuilder();
+        return $data;
     }
     
     public static function connect(){
         return new PDO("sqlite:".SQLite::$SQLite_file);
+    }
+
+    private static function resetBuilder(){
+        SQLite::$query = null;
+        SQLite::$table = null;
+        SQLite::$select = "*";
+        SQLite::$where = '';
+        SQLite::$andWhere = '';
+        SQLite::$orderBy = '';
+        SQLite::$limit = '';
     }
 }
