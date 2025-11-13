@@ -1,1 +1,4 @@
-vendor/
+.env
+storage/
+*.log
+*.cache

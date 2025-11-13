@@ -1,6 +1,10 @@
 <?php
 
 use Core\View;
+use Core\Validator;
+use Core\Response;
+use Core\Session;
+use Core\CSRF;
 
 class Controller{
 
@@ -46,6 +50,47 @@ class Controller{
         }
 
         return (array) $this->middleware;
+    }
+
+    protected function validate(array $data, array $rules): Validator
+    {
+        return Validator::make($data, $rules);
+    }
+
+    protected function json($data, int $statusCode = 200): void
+    {
+        Response::json($data, $statusCode);
+    }
+
+    protected function success($data = null, string $message = 'Success', int $statusCode = 200): void
+    {
+        Response::success($data, $message, $statusCode);
+    }
+
+    protected function error(string $message, int $statusCode = 400, $errors = null): void
+    {
+        Response::error($message, $statusCode, $errors);
+    }
+
+    protected function redirect(string $url, int $statusCode = 302): void
+    {
+        Response::redirect($url, $statusCode);
+    }
+
+    protected function back(): void
+    {
+        $referer = $_SERVER['HTTP_REFERER'] ?? '/';
+        Response::redirect($referer);
+    }
+
+    protected function csrfToken(): string
+    {
+        return CSRF::token();
+    }
+
+    protected function csrfField(): string
+    {
+        return CSRF::field();
     }
     
 }

@@ -37,6 +37,36 @@ function flash(string $key, $value = null)
     return null;
 }
 
+function env(string $key, $default = null)
+{
+    return \Core\Env::get($key, $default);
+}
+
+function csrf_token(): string
+{
+    return \Core\CSRF::token();
+}
+
+function csrf_field(): string
+{
+    return \Core\CSRF::field();
+}
+
+function cache(string $key, $default = null)
+{
+    return \Core\Cache::get($key, $default);
+}
+
+function cache_put(string $key, $value, int $ttl = null): bool
+{
+    return \Core\Cache::put($key, $value, $ttl);
+}
+
+function cache_remember(string $key, callable $callback, int $ttl = null)
+{
+    return \Core\Cache::remember($key, $callback, $ttl);
+}
+
 class Post{
 
     private static $var = null;
