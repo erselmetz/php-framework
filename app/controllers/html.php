@@ -16,7 +16,7 @@ class Html extends Controller
         $this->error_404();
     }
 
-    public function login()
+    public function login($params = [])
     {
         $this->view('auth/login', [
             'layout' => 'main',
