@@ -10,7 +10,7 @@ if (class_exists('Core\Env')) {
     Env::load();
 }
 
-$RewriteBase = Env::get('APP_URL', '/php-framework/');
+$RewriteBase = Env::get('APP_URL', '/');
 
 // MySQL Database
 $database = [

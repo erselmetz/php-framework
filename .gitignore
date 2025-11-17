@@ -2,11 +2,4 @@
 storage/
 *.log
 *.cache
-docs/index.html
-docs/getting-started.html
-docs/tutorial-*.html
-docs/styles.css
-docs/script.js
-docs/versions.js
-docs/versions/v*.js
-docs/README.md
+docs/
