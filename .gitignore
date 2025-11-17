@@ -3,3 +3,6 @@ storage/
 *.log
 *.cache
 docs/
+!docs/versions/*-changelog.md
+!docs/versions/CHANGELOG_TEMPLATE.md
+!docs/versions/README_CHANGELOG.md
