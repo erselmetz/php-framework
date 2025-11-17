@@ -12,6 +12,8 @@
         <nav>
             <a href="<?= route('home') ?? '/' ?>">Home</a>
             <a href="<?= route('login.show') ?? '/login' ?>">Login</a>
+            <a href="<?= route('form.show') ?? '/form' ?>">Form</a>
+            <a href="<?= route('api.users') ?? '/api/users' ?>">API Users</a>
         </nav>
     </header>
 

@@ -1,20 +1,23 @@
 <?php
 
-class Html extends Controller{
-
+class Html extends Controller
+{
     protected $layout = 'main';
 
-    public function index($get){
+    public function index($get)
+    {
         $this->view('home', [
             'headline' => 'Welcome this is a Simple PHP Framework',
         ]);
     }
 
-    public function e404(){
-        $this->view('error/404');
+    public function e404()
+    {
+        $this->error_404();
     }
 
-    public function login(){
+    public function login()
+    {
         $this->view('auth/login', [
             'layout' => 'main',
         ]);
