@@ -1,5 +1,8 @@
 <?php
 
+// Load core files first
+require_once __DIR__ . '/core/env.php';
+
 use Core\Env;
 
 // Load env if not already loaded

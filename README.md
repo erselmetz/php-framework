@@ -10,6 +10,12 @@ This document serves as comprehensive reference documentation for every public
 component, class, method, and helper function.  Alongside each API you will find
 usage details and runnable examples.
 
+## 📚 Documentation
+
+**Live Documentation:** [View Documentation](https://erselmetz.github.io/php-framework-docs/)
+
+The complete documentation including version history, tutorials, and code examples is available online.
+
 ---
 
 # Quick Start
