@@ -2,7 +2,11 @@
 storage/
 *.log
 *.cache
-docs/
-!docs/versions/*-changelog.md
-!docs/versions/CHANGELOG_TEMPLATE.md
-!docs/versions/README_CHANGELOG.md
+docs/index.html
+docs/getting-started.html
+docs/tutorial-*.html
+docs/styles.css
+docs/script.js
+docs/versions.js
+docs/versions/v*.js
+docs/README.md
